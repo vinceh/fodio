@@ -1,0 +1,95 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass";
+
+@include font-face("ProximaNovaLight", font-files("ProximaNova-Light.otf"));
+@include font-face("ProximaNovaSemiBold", font-files("ProximaNova-Semibold.otf"));
+@include font-face("ProximaNovaRegular", font-files("ProximaNova-Regular.otf"));
+
+@mixin font-regular {
+  font-family: "ProximaNovaRegular";
+}
+
+@mixin font-light {
+  font-family: "ProximaNovaLight";
+}
+
+@mixin font-semibold {
+  font-family: "ProximaNovaSemiBold";
+}
+
+body {
+  @include font-regular;
+  color: #666;
+  background-color: #f6f6f6;
+}
+
+h1, h2, h3 {
+  color: #333;
+  @include font-semibold;
+  @include text-shadow(0 2px 0 white);
+}
+
+h2 {
+  font-size: 28px;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.control {
+  margin-top: 100px;
+  h1 {
+    font-size: 50px;
+  }
+}
+
+
+.tabs {
+  border-bottom: 1px solid #bbb;
+  margin-bottom: 40px;
+  display: table;
+  width: 100%;
+  margin-top: 50px;
+  .tab {
+    float: left;
+    padding: 15px 30px;
+    border: 1px solid #bbb;
+    margin-bottom: -1px;
+    margin-right: 10px;
+    background-color: #eee;
+    border-style: dashed;
+    border-bottom-style: solid;
+    &.active {
+      background-color: #f6f6f6;
+      border-bottom: 1px solid #f6f6f6;
+      color: #333;
+      border-style: solid;
+      &:hover {
+        cursor: default;
+      }
+    }
+    &:hover {
+      background-color: #f6f6f6;
+      cursor: pointer;
+    }
+  }
+}
+
+.tab-content {
+  display: none;
+  @include font-light;
+  &.active {
+    display: block;
+  }
+  h2 {
+    margin-top: 10px;
+    color: #999;
+  }
+}

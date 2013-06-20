@@ -1,0 +1,22 @@
+<div class="container control">
+  <h1>Fodio! </h1>
+  <div class="tabs">
+    <% @users.each_with_index do |u,i| %>
+      <div class="tab <%= 'active' if i == 0 %>" data-tab="tab<%= i %>" ng-click="getStatements(<%= u.id %>)">
+        <%= u.email %>
+      </div>
+    <% end %>
+  </div>
+  <% @users.each_with_index  do |c,i| %>
+    <div class="tab-content <%= 'active' if i == 0 %>" id="tab<%= i %>">
+      <div class="statement-wrap">
+        <textarea ng-model="statement.content"></textarea>
+        <div class="action-wrap" ng-repeat="a in statement.actions">
+          <input class="action" ng-model="a.content">
+          <span ng-click="removeAction($index)">x</span>
+        </div>
+        <button ng-click="addAction()">Add Action</button>
+      </div>
+    </div>
+  <% end %>
+</div>
